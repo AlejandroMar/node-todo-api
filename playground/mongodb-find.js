@@ -15,7 +15,8 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
 
     const db = client.db('TodoApp');
     //The toArray method returns a promise
-    db.collection('Todos').find().toArray()
+    //we can look for special properties like this
+    db.collection('Todos').find({completed: false}).toArray()
         .then(docs => {
             console.log('Users');
             console.log(JSON.stringify(docs, undefined, 2))
